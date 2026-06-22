@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of Aditya Meena, AI Engineer and DevOps-focused Computer Science undergraduate skilled in AWS, Docker, Jenkins, Ansible, Linux, Node.js, Express.js, and MongoDB." />
+  <title>Aditya Meena | AI Engineer Portfolio</title>
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg-soft: #0d1b2e;
+      --panel: rgba(255, 255, 255, 0.075);
+      --panel-strong: rgba(255, 255, 255, 0.12);
+      --text: #edf5ff;
+      --muted: #9fb0c5;
+      --line: rgba(255, 255, 255, 0.14);
+      --primary: #69e6b1;
+      --secondary: #7cc9ff;
+      --accent: #ffd166;
+      --danger: #ff6b6b;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --max-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 10%, rgba(105, 230, 177, 0.2), transparent 26%),
+        radial-gradient(circle at 88% 12%, rgba(124, 201, 255, 0.18), transparent 24%),
+        radial-gradient(circle at 50% 85%, rgba(255, 209, 102, 0.1), transparent 28%),
+        linear-gradient(135deg, #06101d 0%, #07111f 45%, #0d1728 100%);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent 80%);
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(18px);
+      background: rgba(7, 17, 31, 0.76);
+    }
+
+    .nav {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      color: #06101d;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      box-shadow: 0 14px 40px rgba(105, 230, 177, 0.22);
+      flex: 0 0 auto;
+    }
+
+    .brand-text {
+      min-width: 0;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 0.98rem;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .brand-text span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.82rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 6px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.045);
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 700;
+      padding: 9px 13px;
+      border-radius: 999px;
+      transition: 0.22s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      background: rgba(255,255,255,0.09);
+    }
+
+    .hero {
+      padding: 76px 0 58px;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(340px, 0.85fr);
+      gap: 32px;
+      align-items: stretch;
+    }
+
+    .hero-card,
+    .profile-card,
+    .section-card,
+    .project-card,
+    .skill-card,
+    .timeline-card {
+      border: 1px solid var(--line);
+      background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.045));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(20px);
+    }
+
+    .hero-card {
+      border-radius: var(--radius-xl);
+      padding: clamp(28px, 5vw, 54px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      right: -130px;
+      top: -120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(105,230,177,0.28), transparent 68%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid rgba(105, 230, 177, 0.25);
+      border-radius: 999px;
+      color: var(--primary);
+      background: rgba(105, 230, 177, 0.08);
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 7vw, 5.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.07em;
+      margin-bottom: 22px;
+      max-width: 790px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(120deg, var(--primary), var(--secondary) 58%, var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-lead {
+      max-width: 760px;
+      color: #d2deed;
+      font-size: clamp(1.03rem, 2vw, 1.22rem);
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 34px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 48px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      font-weight: 850;
+      transition: transform 0.22s ease, background 0.22s ease, border-color 0.22s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      color: #05131d;
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      box-shadow: 0 16px 42px rgba(105,230,177,0.18);
+    }
+
+    .btn-ghost {
+      color: var(--text);
+      background: rgba(255,255,255,0.065);
+    }
+
+    .quick-stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .stat {
+      padding: 17px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.55rem;
+      line-height: 1;
+      color: var(--text);
+      margin-bottom: 7px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .profile-card {
+      border-radius: var(--radius-xl);
+      padding: 24px;
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(124,201,255,0.14), transparent 44%);
+      pointer-events: none;
+    }
+
+    .profile-image-wrap {
+      position: relative;
+      border-radius: 26px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.05);
+      min-height: 345px;
+      isolation: isolate;
+    }
+
+    .profile-image-wrap img {
+      width: 100%;
+      height: 100%;
+      min-height: 345px;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(1.05) contrast(1.03);
+    }
+
+    .profile-image-wrap::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 46%, rgba(7,17,31,0.78));
+      z-index: 1;
+    }
+
+    .floating-badge {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      z-index: 2;
+      border-radius: 20px;
+      padding: 15px;
+      background: rgba(7,17,31,0.74);
+      border: 1px solid rgba(255,255,255,0.14);
+      backdrop-filter: blur(15px);
+    }
+
+    .floating-badge strong {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 3px;
+    }
+
+    .floating-badge span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .contact-list {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      gap: 10px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 14px;
+      border-radius: 16px;
+      color: #d9e5f4;
+      background: rgba(255,255,255,0.055);
+      border: 1px solid rgba(255,255,255,0.09);
+      overflow-wrap: anywhere;
+    }
+
+    .contact-item span:first-child {
+      width: 28px;
+      height: 28px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      background: rgba(105,230,177,0.12);
+      flex: 0 0 auto;
+    }
+
+    section {
+      padding: 38px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 22px;
+    }
+
+    .section-kicker {
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.76rem;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: clamp(1.9rem, 4vw, 3.3rem);
+      line-height: 1.04;
+      letter-spacing: -0.045em;
+    }
+
+    .section-head p {
+      max-width: 430px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .section-card {
+      border-radius: var(--radius-lg);
+      padding: clamp(24px, 4vw, 36px);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 0.95fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .about-text p {
+      color: #d8e4f1;
+      margin-bottom: 16px;
+      font-size: 1.02rem;
+    }
+
+    .focus-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .focus-item {
+      padding: 17px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.055);
+      border: 1px solid rgba(255,255,255,0.09);
+    }
+
+    .focus-item strong {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1rem;
+      margin-bottom: 5px;
+    }
+
+    .focus-item p {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .skill-card {
+      border-radius: 22px;
+      padding: 22px;
+      min-height: 178px;
+      transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+    }
+
+    .skill-card:hover,
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(105,230,177,0.28);
+      background: linear-gradient(145deg, rgba(105,230,177,0.09), rgba(255,255,255,0.055));
+    }
+
+    .skill-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      font-size: 1.25rem;
+      background: rgba(124,201,255,0.12);
+      margin-bottom: 16px;
+    }
+
+    .skill-card h3 {
+      font-size: 1.08rem;
+      margin-bottom: 10px;
+      letter-spacing: -0.015em;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: #cbd8e8;
+      font-size: 0.82rem;
+      font-weight: 800;
+      background: rgba(255,255,255,0.065);
+      border: 1px solid rgba(255,255,255,0.085);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .project-card {
+      border-radius: var(--radius-lg);
+      padding: 26px;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+    }
+
+    .project-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .project-type {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--primary);
+      font-size: 0.78rem;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .project-card h3 {
+      font-size: 1.45rem;
+      line-height: 1.15;
+      letter-spacing: -0.035em;
+      margin-top: 8px;
+    }
+
+    .project-link {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      color: #06101d;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      flex: 0 0 auto;
+      font-weight: 950;
+    }
+
+    .project-card p {
+      color: #cedaec;
+      margin-bottom: 18px;
+    }
+
+    .project-card ul {
+      color: var(--muted);
+      display: grid;
+      gap: 10px;
+      margin-left: 18px;
+      margin-bottom: 22px;
+    }
+
+    .project-card li::marker {
+      color: var(--primary);
+    }
+
+    .project-card .tags {
+      margin-top: auto;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+    }
+
+    .timeline-card {
+      border-radius: 22px;
+      padding: 22px;
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 20px;
+      position: relative;
+    }
+
+    .timeline-card::before {
+      content: "";
+      position: absolute;
+      left: 23px;
+      top: 23px;
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--primary);
+      box-shadow: 0 0 0 8px rgba(105,230,177,0.11);
+    }
+
+    .timeline-meta {
+      color: var(--primary);
+      font-weight: 900;
+      padding-left: 24px;
+      font-size: 0.9rem;
+    }
+
+    .timeline-body h3 {
+      font-size: 1.2rem;
+      margin-bottom: 6px;
+    }
+
+    .timeline-body p {
+      color: var(--muted);
+    }
+
+    .cta {
+      padding: 42px 0 68px;
+    }
+
+    .cta-card {
+      border-radius: var(--radius-xl);
+      padding: clamp(28px, 5vw, 48px);
+      border: 1px solid rgba(105,230,177,0.24);
+      background:
+        radial-gradient(circle at 15% 25%, rgba(105,230,177,0.16), transparent 28%),
+        linear-gradient(145deg, rgba(255,255,255,0.105), rgba(255,255,255,0.045));
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .cta-card h2 {
+      max-width: 760px;
+      margin-bottom: 12px;
+    }
+
+    .cta-card p {
+      color: var(--muted);
+      max-width: 720px;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.09);
+      padding: 24px 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .about-grid,
+      .cta-card {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 48px;
+      }
+
+      .profile-card {
+        max-width: 620px;
+      }
+
+      .quick-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .container {
+        width: min(100% - 26px, var(--max-width));
+      }
+
+      .nav {
+        height: auto;
+        padding: 14px 0;
+        align-items: flex-start;
+      }
+
+      .brand-text span {
+        display: none;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-card,
+      .profile-card,
+      .section-card,
+      .project-card,
+      .cta-card {
+        border-radius: 24px;
+      }
+
+      .hero-card {
+        padding: 26px 20px;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .quick-stats,
+      .skills-grid,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-head p {
+        margin-top: 10px;
+      }
+
+      .timeline-card {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .timeline-meta {
+        padding-left: 24px;
+      }
+
+      .profile-image-wrap,
+      .profile-image-wrap img {
+        min-height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="Aditya Meena portfolio home">
+        <span class="brand-mark">AM</span>
+        <span class="brand-text">
+          <strong>Aditya Meena</strong>
+          <span>AI Engineer · DevOps Automation · Cloud Infrastructure</span>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-card">
+          <span class="eyebrow">Open to entry-level AI, DevOps & Software Engineering roles</span>
+          <h1>Building reliable <span class="gradient-text">cloud-native systems</span> with automation-first thinking.</h1>
+          <p class="hero-lead">
+            Computer Science undergraduate with hands-on experience across CI/CD automation, AWS cloud infrastructure,
+            Docker containerization, Ansible provisioning, Linux administration, and full-stack development with Node.js,
+            Express.js, and MongoDB.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="mailto:adityajharwal.dev@gmail.com">Contact Me</a>
+            <a class="btn btn-ghost" href="https://innovit-candidate-documents.s3.ap-south-1.amazonaws.com/resumes/f47ef904b0864dc8901fc2baa1be2aa3-AdityaMeena_Resume.pdf" target="_blank" rel="noopener">View Resume</a>
+            <a class="btn btn-ghost" href="https://github.com/Aditya" target="_blank" rel="noopener">GitHub</a>
+          </div>
+          <div class="quick-stats" aria-label="Portfolio highlights">
+            <div class="stat">
+              <strong>8+</strong>
+              <span>CI/CD stages automated</span>
+            </div>
+            <div class="stat">
+              <strong>60%</strong>
+              <span>Release-time reduction</span>
+            </div>
+            <div class="stat">
+              <strong>3</strong>
+              <span>AWS EC2 deployments</span>
+            </div>
+            <div class="stat">
+              <strong>2026</strong>
+              <span>B.Tech graduation</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="profile-card" aria-label="Profile summary">
+          <div class="profile-image-wrap">
+            <img src="https://innovit-candidate-documents.s3.ap-south-1.amazonaws.com/profile-pics/b57550ed3d8648aea506bcd823dc712e-1778140065030.png" alt="Aditya Meena profile photo" />
+            <div class="floating-badge">
+              <strong>AI Engineer</strong>
+              <span>Bhilwara, Rajasthan · Fresher</span>
+            </div>
+          </div>
+          <div class="contact-list">
+            <a class="contact-item" href="mailto:adityajharwal.dev@gmail.com"><span>✉</span><span>adityajharwal.dev@gmail.com</span></a>
+            <a class="contact-item" href="tel:+918005654664"><span>☎</span><span>+91 8005654664</span></a>
+            <a class="contact-item" href="https://www.linkedin.com/in/adityajharwal" target="_blank" rel="noopener"><span>in</span><span>linkedin.com/in/adityajharwal</span></a>
+            <a class="contact-item" href="https://github.com/Aditya" target="_blank" rel="noopener"><span>⌘</span><span>github.com/Aditya</span></a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">About</div>
+            <h2>Engineer focused on automation, reliability, and practical delivery.</h2>
+          </div>
+          <p>Strong foundation in DevOps workflows, cloud infrastructure, secure deployments, and production-ready backend systems.</p>
+        </div>
+        <div class="section-card about-grid">
+          <div class="about-text">
+            <p>
+              Aditya Meena is a Computer Science undergraduate pursuing B.Tech, expected in 2026. He has hands-on experience
+              building DevOps automation workflows, CI/CD pipelines, AWS cloud deployments, containerized applications, and
+              full-stack systems.
+            </p>
+            <p>
+              His technical work includes Jenkins Pipeline-as-Code, Maven builds, SonarQube quality gates, Nexus artifact
+              management, Docker image publishing, AWS ECR and EC2 deployments, Ansible provisioning, Linux administration,
+              shell scripting, and backend development using Node.js, Express.js, and MongoDB.
+            </p>
+          </div>
+          <div class="focus-list">
+            <div class="focus-item">
+              <strong>⚙️ CI/CD Automation</strong>
+              <p>Automates build, quality analysis, artifact storage, Docker packaging, registry publishing, and deployment workflows.</p>
+            </div>
+            <div class="focus-item">
+              <strong>☁️ AWS Infrastructure</strong>
+              <p>Works with EC2, ECR, VPC, subnets, security groups, network ACLs, Route 53, and secure environment setup.</p>
+            </div>
+            <div class="focus-item">
+              <strong>🧩 Full-Stack Systems</strong>
+              <p>Builds role-based applications with Express.js, MongoDB schemas, authentication, validation, and structured APIs.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Technical Skills</div>
+            <h2>Cloud, automation, containers, backend, and Linux tooling.</h2>
+          </div>
+          <p>A practical toolkit for building, shipping, and maintaining scalable software environments.</p>
+        </div>
+        <div class="skills-grid">
+          <article class="skill-card">
+            <div class="skill-icon">☁️</div>
+            <h3>Cloud & Infrastructure</h3>
+            <div class="tags">
+              <span class="tag">AWS EC2</span><span class="tag">AWS ECR</span><span class="tag">VPC</span><span class="tag">Subnets</span><span class="tag">Route 53</span><span class="tag">Security Groups</span>
+            </div>
+          </article>
+          <article class="skill-card">
+            <div class="skill-icon">🔁</div>
+            <h3>CI/CD & Automation</h3>
+            <div class="tags">
+              <span class="tag">Jenkins</span><span class="tag">Pipeline-as-Code</span><span class="tag">Maven</span><span class="tag">Nexus</span><span class="tag">GitHub Webhooks</span>
+            </div>
+          </article>
+          <article class="skill-card">
+            <div class="skill-icon">📦</div>
+            <h3>Containers & Orchestration</h3>
+            <div class="tags">
+              <span class="tag">Docker</span><span class="tag">Docker Hub</span><span class="tag">AWS ECR</span><span class="tag">Kubernetes Concepts</span>
+            </div>
+          </article>
+          <article class="skill-card">
+            <div class="skill-icon">🧰</div>
+            <h3>Configuration Management</h3>
+            <div class="tags">
+              <span class="tag">Ansible</span><span class="tag">Playbooks</span><span class="tag">Inventory</span><span class="tag">Roles</span><span class="tag">Provisioning</span>
+            </div>
+          </article>
+          <article class="skill-card">
+            <div class="skill-icon">🛡️</div>
+            <h3>Code Quality</h3>
+            <div class="tags">
+              <span class="tag">SonarQube</span><span class="tag">Static Analysis</span><span class="tag">Quality Gates</span><span class="tag">Vulnerability Detection</span>
+            </div>
+          </article>
+          <article class="skill-card">
+            <div class="skill-icon">🐧</div>
+            <h3>OS & Scripting</h3>
+            <div class="tags">
+              <span class="tag">Linux</span><span class="tag">Ubuntu</span><span class="tag">Red Hat</span><span class="tag">Bash</span><span class="tag">Shell Scripting</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Selected Work</div>
+            <h2>Projects that show automation depth and product thinking.</h2>
+          </div>
+          <p>Hands-on project work across DevOps pipelines, AWS deployment, backend engineering, authentication, and multi-role applications.</p>
+        </div>
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-top">
+              <div>
+                <span class="project-type">Project</span>
+                <h3>DevOps Automation Hub — End-to-End CI/CD Pipeline & AWS Deployment</h3>
+              </div>
+              <a class="project-link" href="https://github.com/Aditya" target="_blank" rel="noopener" aria-label="Open DevOps Automation Hub project">↗</a>
+            </div>
+            <p>Production-style automation pipeline connecting source control, build, analysis, artifact management, containerization, registry publishing, and cloud deployment.</p>
+            <ul>
+              <li>Designed a Jenkins CI/CD pipeline automating Git checkout, Maven build, SonarQube analysis, Nexus storage, Docker build, AWS ECR push, and EC2 deployment.</li>
+              <li>Containerized a Java/Maven application and managed deployments across 3 AWS EC2 instances for consistent runtime environments.</li>
+              <li>Used Ansible playbooks to automate provisioning and reduce configuration drift across environments.</li>
+              <li>Integrated SonarQube quality gates to block non-compliant builds before deployment.</li>
+              <li>Architected secure AWS networking with VPC, subnets, security groups, network ACLs, and Route 53 DNS.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Jenkins</span><span class="tag">AWS</span><span class="tag">Docker</span><span class="tag">Ansible</span><span class="tag">SonarQube</span><span class="tag">Nexus</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top">
+              <div>
+                <span class="project-type">Project</span>
+                <h3>Farmly — Multi-Role Farm-to-Table Marketplace</h3>
+              </div>
+              <a class="project-link" href="https://github.com/Aditya" target="_blank" rel="noopener" aria-label="Open Farmly project">↗</a>
+            </div>
+            <p>Role-based marketplace platform designed for Admin, Farmer, Customer, and Delivery Partner workflows with secure backend foundations.</p>
+            <ul>
+              <li>Architected a 4-tier role-based system with dedicated dashboards and cross-role data flows.</li>
+              <li>Implemented authentication using Bcrypt password hashing and Nodemailer OTP-based email verification.</li>
+              <li>Integrated Geolocation API support and designed 6+ MongoDB schemas for inventory and order management.</li>
+              <li>Added validator.js middleware for input sanitization and structured error handling across API routes.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">MongoDB</span><span class="tag">Bcrypt</span><span class="tag">Nodemailer</span><span class="tag">Validator.js</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="journey">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Journey</div>
+            <h2>Academic foundation with practical software environments.</h2>
+          </div>
+          <p>Built through undergraduate study, project execution, and internship exposure in professional software settings.</p>
+        </div>
+        <div class="timeline">
+          <div class="timeline-card">
+            <div class="timeline-meta">2026</div>
+            <div class="timeline-body">
+              <h3>B.Tech in Computer Science</h3>
+              <p>Undergraduate foundation in software engineering, infrastructure concepts, backend systems, and applied development.</p>
+            </div>
+          </div>
+          <div class="timeline-card">
+            <div class="timeline-meta">Projects</div>
+            <div class="timeline-body">
+              <h3>DevOps, Cloud & Full-Stack Engineering</h3>
+              <p>Delivered project work spanning CI/CD automation, AWS deployments, Docker workflows, Ansible provisioning, Linux scripting, and MongoDB-backed applications.</p>
+            </div>
+          </div>
+          <div class="timeline-card">
+            <div class="timeline-meta">Internships</div>
+            <div class="timeline-body">
+              <h3>Professional Software Exposure</h3>
+              <p>Completed two internships in professional software environments, gaining practical experience with development workflows and production-oriented engineering practices.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <div class="container">
+        <div class="cta-card">
+          <div>
+            <div class="section-kicker">Contact</div>
+            <h2>Looking for an entry-level engineer who can automate, deploy, and learn fast?</h2>
+            <p>Aditya is available for AI Engineer, DevOps Engineer, Cloud/Infrastructure, and Software Engineering opportunities.</p>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="mailto:adityajharwal.dev@gmail.com">Email Aditya</a>
+            <a class="btn btn-ghost" href="https://www.linkedin.com/in/adityajharwal" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <span>© 2026 Aditya Meena. Portfolio generated from candidate profile data.</span>
+      <span>Bhilwara · AI Engineer · DevOps Automation</span>
+    </div>
+  </footer>
+</body>
+</html>
